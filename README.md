@@ -19,7 +19,7 @@ This means that once you have an access token for your application, you never ha
 
 For this server-side library, we assume you're writing an app using your own account (aka on the server side). If you're writing an app that sits on a client, you have to go through an extra step to get that user's access token from your application's access token.
 
-### Step 1: Obtain an Access Token.
+#### Step 1: Obtain an Access Token.
 
 To obtain an Access Token, you create an application [here](http://dev.groupme.com/applications/new).
 
@@ -27,11 +27,11 @@ Once you've done this, you will have an access token string that you can now use
 
     const ACCESS_TOKEN = "13a14310effe0130ee234ea2b99c2231";
 
-### Step 2: Create the stateless API with the given ACCESS_TOKEN
+#### Step 2: Create the stateless API with the given ACCESS_TOKEN
 
     var API = require('groupme')Stateless.makeAPI(ACCESS_TOKEN)
 
-### Step 3: Getting and posting data with the stateless API
+#### Step 3: Getting and posting data with the stateless API
     
     API.Users.me(function(err,ret) {
       if (!err) {
@@ -45,11 +45,11 @@ Currently we have two simple examples in the /example directory.
 
 **Both Examples require that you fill your Access Code into the file**
 
-### HelloWorld
+#### HelloWorld
 
 This example simply requests your username and 
 
-### HelloBot
+#### HelloBot
 
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
 
