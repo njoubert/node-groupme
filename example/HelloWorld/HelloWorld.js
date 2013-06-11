@@ -2,7 +2,7 @@
 
 var Stateless = require('../../lib/Stateless');
 
-var ACCESS_TOKEN = "02f19310adac0130ac394ea6b36c8247";
+var ACCESS_TOKEN = "";
 
 var API = Stateless.makeAPI(ACCESS_TOKEN);
 
