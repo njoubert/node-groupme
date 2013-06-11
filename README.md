@@ -29,7 +29,7 @@ Once you've done this, you will have an access token string that you can now use
 
 #### Step 2: Create the stateless API with the given ACCESS_TOKEN
 
-    var API = require('groupme')Stateless.makeAPI(ACCESS_TOKEN)
+    var API = require('groupme').Stateless.makeAPI(ACCESS_TOKEN)
 
 #### Step 3: Getting and posting data with the stateless API
     
