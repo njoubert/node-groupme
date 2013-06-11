@@ -55,4 +55,4 @@ This example uses the IncomingStream API to monitor for a message containing the
 
 ## Documentation
 
-The code itself is fairly terse and well-commented, and naturally is the final 
+The code itself is fairly terse and well-commented, and is the best place to go for the full API. Once we hit 1.0.0 release, we'll write up all the docs
