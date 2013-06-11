@@ -1,0 +1,9 @@
+{
+    "name": "node-groupme-helloworld-example",
+    "description": "Hello World Example for Node-GroupMe, simply gets user info",
+    "author": "Niels Joubert <njoubert@gmail.com> (http://njoubert.com/)",
+    "version": "1.0.0",
+    "dependencies": {
+
+    }
+}
