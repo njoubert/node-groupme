@@ -48,7 +48,7 @@ API.Users.me(function(err,ret) {
 //   }
 // })
 
-// API.Groups.destroy("4699240", function(err,ret) {
+// API.Groups.destroy("4699307", function(err,ret) {
 //   console.log(err);
 // })
 
