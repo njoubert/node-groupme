@@ -47,7 +47,7 @@ Currently we have two simple examples in the /example directory.
 
 #### HelloWorld
 
-This example simply requests your username and 
+This example simply requests your username and user id, and prints out the groups you belong to.
 
 #### HelloBot
 
