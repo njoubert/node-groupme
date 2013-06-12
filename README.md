@@ -99,9 +99,11 @@ The code itself is fairly terse and well-commented, and is the best place to go 
 
 ### Stateless
 
-Include it:
-    
-    var api = require('groupme').Stateless;
+Include it as follows: `var api = require('groupme').Stateless;`
+
+Callbacks follow the node.js standard: `function callback(error, data) {};`. If no error occurs, the `error` parameter is `null`.
+
+`Opts` are always optional, except for `api.Messages.create`, and consists of a JSON object.
 
 #### Groups
 
@@ -115,25 +117,40 @@ Include it:
     * Opts consists of `{name:,description:,mage_url:,share:}`
 * `api.Groups.destroy(access_token, group_id, callback)` Disband a group. This action is only available to the group creator.
 
-    
-
 
 #### Members
 
-
+* `api.Members.add(access_token, group_id, opts, callback)` Add members to a group.
+    * Opts consists of `{members: [{nickname:, user_id:, phone_number:, email: }, ...]}`
+* `api.Members.results(access_token, group_id, results_id, callback)` Get the membership results from an add call.
 
 
 #### Messages
+
+* `api.Messages.index(access_token, group_id, opts, callback)` Get messages for a group
+    * Opts consists of `{before_id:}` or `{after_id:}`
+* `api.Messages.create(access_token, group_id, opts, callback)`
+    * Opts here are required, and consists of `{message:{source_guid:, text:, attachments: [{type:"image", url:}, {type:"location", name:, lat, lng}, {type:"split", token:}, {type:"emoji", placeholder:, charmap:}]}}`
 
 
 #### Likes
 
 
+* `api.Likes.create(access_token, group_id, message_id, callback)` Like a message.
+* `api.Likes.destroy(access_token, group_id, message_id, callback)` Unlike a liked message.
+
 #### Bots
 
+* `api.Bots.create(access_token, name, group_id, opts, callback)` Create a bot. Associated with a specific name and group.
+    * Opts consists of `{avatar_url:, callback_url:}`
+* `api.Bots.post(access_token, bot_id, text, opts, callback)` Post a message as a bot.
+    * Opts cosists of `{picture_url:}`
+* `api.Bots.index(access_token, callback)` List bots you have created
+* `api.Bots.destroy(access_token, bot_id, callback)` Remove a bot that you have created
 
 #### Users
 
+* `api.Users.me(access_token, callback)` Get details about the authenticated user
 
 ### IncomingStream
 
