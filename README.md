@@ -4,13 +4,17 @@ node-groupme
 A GroupMe v3 API Module for NodeJS.
 http://dev.groupme.com/docs/v3
 
-This supports all 3parts of the GroupMe API:
+This supports all 3 parts of the GroupMe API:
 
 - The [Stateless API](http://dev.groupme.com/docs/v3)
 - The [Push API](http://dev.groupme.com/tutorials/push), a Websocket-based message pushing service 
 - The [Image Service API](http://dev.groupme.com/docs/image_service), for uploading images to messages
 
 One use case of this library is [building bots](http://dev.groupme.com/tutorials/bots).
+
+If you are using this library, feel free to shoot me an email with any questions!
+
+Niels Joubert <[njoubert@gmail.com](mailto:njoubert@gmail.com)>
 
 ## Getting Started
 
@@ -60,6 +64,36 @@ This example simply requests your username and user id, and prints out the group
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
 
     node HelloBot.js <ACCESS_TOKEN>
+
+#### Promises
+
+Shows how to use the fantastic [Q promise library](http://documentup.com/kriskowal/q/) to wrap all the callback-based Stateless API functions and create a promise-based library.
+
+First, we patch all the functions in the stateless API to have a .Q function hanging off it:
+
+    var API = require('../../index').Stateless;
+    var Q   = require('Q');
+
+    var qfunc = function() {
+        var args = Array.prototype.slice.call(arguments);
+        return Q.nfapply(this, args);
+    }
+
+    for (g in API) {
+        for (f in API[g]) {
+            API[g][f].Q = qfunc;
+        }
+    }
+
+Now, we can use these functions to generate promises:
+
+    API.Users.me.Q(ACCESS_TOKEN)
+        .then(function(da) { 
+            return API.Groups.index.Q(ACCESS_TOKEN); 
+        }).then(function(da) {
+            console.log(da);
+        });
+
 
 ## Documentation
 
