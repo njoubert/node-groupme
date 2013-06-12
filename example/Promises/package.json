@@ -4,6 +4,6 @@
     "author": "Niels Joubert <njoubert@gmail.com> (http://njoubert.com/)",
     "version": "1.0.0",
     "dependencies": {
-        "Q": ">= 0.9.0"
+
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "groupme",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "main": "index",
   "description": "A Node Module for interacting with the GroupMe API. Supports both querying the Stateless API and receiving Websocket-based push messages.",
   "keywords": ["groupme", "api", "text", "bot", "websocket", "push"],
@@ -22,10 +22,11 @@
   "dependencies": {
     "websocket": "1.0.x",
     "underscore": "1.4.x",
-    "request": "2.12.x"
+    "request": "2.12.x",
+    "q": "0.9.x"
   },
   "devDependencies" : {
-    "q": "0.9.x"
+    
   },
   "license" : [
     { "type" : "zlib",

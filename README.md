@@ -75,7 +75,7 @@ Shows how to use the fantastic [Q promise library](http://documentup.com/kriskow
 First, we patch all the functions in the stateless API to have a .Q function hanging off it:
 
     var API = require('../../index').Stateless;
-    var Q   = require('Q');
+    var Q   = require('q');
 
     var qfunc = function() {
         var args = Array.prototype.slice.call(arguments);
@@ -117,6 +117,10 @@ Include it as follows: `var api = require('groupme').Stateless;`
 Callbacks follow the node.js standard: `function callback(error, data) {};`. If no error occurs, the `error` parameter is `null`.
 
 `Opts` are always optional, except for `api.Messages.create`, and consists of a JSON object.
+
+**Promises vs Callbacks:**
+
+The default interface uses callbacks, but you can also use the Promise interface to every function, by calling `promise = func.Q()`. The parameters are exactly the same, except the last `callback` parameter from the original function is gone in the Promise-based version. See the Promise example and read the [Q documentation](http://documentup.com/kriskowal/q/).
 
 #### Groups
 
