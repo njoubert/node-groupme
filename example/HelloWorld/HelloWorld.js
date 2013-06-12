@@ -16,26 +16,35 @@ API.Users.me(ACCESS_TOKEN, function(err,ret) {
   }
 });
 
-// API.Groups.index(ACCESS_TOKEN, function(err,ret) {
-//   if (!err) {
-//     var names = [];
-//     for (var i = 0; i < ret.length; i++) {
-//       names.push({"name":ret[i].name, "id":ret[i].id});
-//     }
-//     console.log(names); 
-//     //console.log(ret);
-//   } else {
-//     console.log("ERROR!", err)
-//   }
-// });
+API.Groups.index(ACCESS_TOKEN, function(err,ret) {
+  if (!err) {
+    var names = [];
+    for (var i = 0; i < ret.length; i++) {
+      names.push({"name":ret[i].name, "id":ret[i].id});
+    }
+    console.log(names); 
+    //console.log(ret);
+  } else {
+    console.log("ERROR!", err)
+  }
+});
 
-// API.Groups.show(ACCESS_TOKEN, "3393242",function(err,ret) {
-//   if (!err) {
-//     console.log("Group info is", ret);        
-//   } else {
-//     console.log("ERROR!", err)
-//   }
-// });
+
+if (process.argv.length == 4) {
+
+    var group_id = process.argv[3];
+
+    API.Groups.show(ACCESS_TOKEN, group_id,function(err,ret) {
+      if (!err) {
+        console.log("Group info is", ret);        
+      } else {
+        console.log("ERROR!", err)
+      }
+    });
+
+
+}
+
 
 
 // var opts = {
