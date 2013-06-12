@@ -2,6 +2,7 @@ node-groupme
 ============
 
 A [GroupMe v3 API](http://dev.groupme.com/docs/v3) Module for NodeJS.
+
 Available from NPM: `npm install groupme`
 https://npmjs.org/package/groupme
 
@@ -172,7 +173,38 @@ The default interface uses callbacks, but you can also use the Promise interface
 
 ### IncomingStream
 
-In Progress.
+The IncomingStream is based around a PubSub message passing approach. It extends EventEmitter, and all the asynchronous push messages coming in from the server causes events to be fired.
+
+#### Initialization & Function Calls
+
+
+* `IncomingStream(access_token, userid, groupids)` - Constructs an IncomingStream for the given token and user_id. The optional groupids parameter is an array of group ids to receive in-progress notifications from.
+* `IncomingStream.connect()` - Starts the websocket connection process, handshakes with GroupMe
+* `IncomingStream.disconnect()` - Ends the websocket connection. Can `connect()` after this again.
+
+Include the IncomingStream as follows:
+
+    var IncomingStream = require('groupme').IncomingStream;
+
+You can construct an IncomingStream for a given access token and user id, which will receive all messages sent to that user, regardless of group: 
+
+    var iStream = new IncomingStream(ACCESS_TOKEN, USER_ID);
+
+If you want to receive typing-in-progress notifications for specific groups, you can supply an array of group ids:
+
+    var iStream = new IncomingStream(ACCESS_TOKEN, USER_ID, [GROUP_ID1, ...]);
+
+#### Events
+
+Register for events using `iStream.on(EVENT, CALLBACK);`
+
+
+* `connected` When the connection succeeds and is listening for messages.
+* `pending` When a connection is in progress
+* `disconnected` When a connection is dropped.
+* `message` Received a message from GroupMe, passing `(data)`, JSON from server
+* `error` when a failure occurs, passing `(message, payload)`
+* `status` For logging purposes, passing `(message, payload)`
 
 ### ImageService
 
