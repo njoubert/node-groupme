@@ -47,9 +47,9 @@ An example of this is beyond the scope of our introduction, but you can peruse [
 
 ## Examples
 
-Currently we have two simple examples in the /example directory.
+Examples live in the `/example` directory.
 
-**Both Examples require that you pass it an Access Token as a command line argument**
+*Examples require that you pass it an Access Token as a command line argument*
 
 #### HelloWorld
 
@@ -93,9 +93,17 @@ Now, we can use these functions to generate promises:
         });
 
 
+
+## Development
+
+I welcome pull requests, emails, bug reports and the like. 
+
+That being said, this is not my full-time job. If you are using this as part of yours and want to take over as lead developer we can have that discussion.
+
+
 ## API Documentation
 
-The code itself is fairly terse and well-commented, and is the best place to go for the full API. 
+The code itself is fairly terse and well-commented, and is the best place to go for the full API, but here we stub out all the functionality for quick reference. 
 
 ### Stateless
 
@@ -161,10 +169,4 @@ In Progress.
 In Progress.
 
 
-
-## Development
-
-I welcome pull requests, emails, bug reports and the like. 
-
-That being said, this is not my full-time job. If you are using this as part of yours and want to take over as lead developer we can have that discussion.
 
