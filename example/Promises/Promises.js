@@ -33,3 +33,17 @@ API.Users.me.Q(ACCESS_TOKEN)
         function(da) {
             console.log(da);
         });
+
+
+API.Users.me.Q("gibbbbbbb")
+    .then(
+        function(da) { 
+            var id = da.id;
+            return API.Groups.index.Q(ACCESS_TOKEN); 
+        })
+    .then (
+        function(da) {
+            console.log(da);
+        },function(err) {
+            console.log("As expected, an ERROR occured:", err)
+        });
