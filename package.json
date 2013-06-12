@@ -23,5 +23,9 @@
   "devDependencies" : {
     "q": "0.9.x"
   },
-  "license" : "MIT"
+  "license" : [
+    { "type" : "zlib",
+     "url" : "http://github.com/njoubert/node-groupme/blob/master/LICENSE"
+    }
+  ]
 }
