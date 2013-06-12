@@ -105,30 +105,16 @@ Include it:
 
 #### Groups
 
+
+* `api.Groups.index(at, callback)` List the authenticated user's active groups.
+* `api.Groups.former(at, callback)` List they groups you have left but can rejoin.
+* `api.Groups.show(at, id, callback)` Load a specific group.
+* `api.Groups.create(at, opts, callback)` Create a new group
+* `api.Groups.update(at, id, opts, callback)` Update a group after creation
+* `api.Groups.destroy(at, id, callback)` Disband a group. This action is only available to the group creator.
+
     
-    api.Groups.index(at, callback)
 
-List the authenticated user's active groups.
-
-    api.Groups.former(at, callback)
-
-List they groups you have left but can rejoin.
-
-    api.Groups.show(at, id, callback) 
-
-Load a specific group.
-
-    api.Groups.create(at, opts, callback)
-
-Create a new group
-
-    api.Groups.update(at, id, opts, callback)
-
-Update a group after creation
-
-    api.Groups.destroy(at, id, callback) 
-
-Disband a group. This action is only available to the group creator.
 
 #### Members
 
