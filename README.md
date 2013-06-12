@@ -1,8 +1,9 @@
 node-groupme
 ============
 
-A GroupMe v3 API Module for NodeJS.
-http://dev.groupme.com/docs/v3
+A [GroupMe v3 API](http://dev.groupme.com/docs/v3) Module for NodeJS.
+Available from NPM: `npm install groupme`
+https://npmjs.org/package/groupme
 
 This supports all 3 parts of the GroupMe API:
 
