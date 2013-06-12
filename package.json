@@ -8,14 +8,20 @@
     "type": "git",
     "url": "http://github.com/njoubert/node-groupme.git"
   },
+  "bugs": {
+    "url": "https://github.com/njoubert/node-groupme/issues"
+  },
   "main": "index",
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {
-    "websocket": "~1.0.8",
-    "underscore": "~1.4.4",
-    "request": "~2.12.0"
+    "websocket": "1.0.x",
+    "underscore": "1.4.x",
+    "request": "2.12.x"
+  },
+  "devDependencies" : {
+    "q": "0.9.x"
   },
   "license" : "MIT"
 }
