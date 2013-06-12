@@ -93,6 +93,73 @@ Now, we can use these functions to generate promises:
         });
 
 
-## Documentation
+## API Documentation
 
-The code itself is fairly terse and well-commented, and is the best place to go for the full API. Once we hit a stable release, we'll write up all the docs
+The code itself is fairly terse and well-commented, and is the best place to go for the full API. 
+
+### Stateless
+
+Include it:
+    
+    var api = require('groupme').Stateless;
+
+#### Groups
+
+    
+    api.Groups.index(at, callback)
+
+List the authenticated user's active groups.
+
+    api.Groups.former(at, callback)
+
+List they groups you have left but can rejoin.
+
+    api.Groups.show(at, id, callback) 
+
+Load a specific group.
+
+    api.Groups.create(at, opts, callback)
+
+Create a new group
+
+    api.Groups.update(at, id, opts, callback)
+
+Update a group after creation
+
+    api.Groups.destroy(at, id, callback) 
+
+Disband a group. This action is only available to the group creator.
+
+#### Members
+
+
+
+
+#### Messages
+
+
+#### Likes
+
+
+#### Bots
+
+
+#### Users
+
+
+### IncomingStream
+
+In Progress.
+
+### ImageService
+
+In Progress.
+
+
+
+## Development
+
+I welcome pull requests, emails, bug reports and the like. 
+
+That being said, this is not my full-time job. If you are using this as part of yours and want to take over as lead developer we can have that discussion.
+
