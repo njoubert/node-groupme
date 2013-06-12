@@ -1,20 +1,24 @@
 #!/usr/bin/env node
 
-var Stateless = require('../../lib/Stateless');
+var GroupMe = require('../../index');
+var API = GroupMe.Stateless;
 
-var ACCESS_TOKEN = "";
+if (process.argv.length < 3) {
+    console.log("Usage: node HelloBot.js ACCESS_TOKEN");
+    process.exit(1);
+} 
+var ACCESS_TOKEN = process.argv[2];
 
-var API = Stateless.makeAPI(ACCESS_TOKEN);
 
-// API.Bots.index(function(err,ret) {
+// API.Bots.index(ACCESS_TOKEN, function(err,ret) {
 //   if (!err) {
 //     console.log(ret);  
-//   } else {
+//   } else {xw
 //     console.log("ERROR!", err)
 //   }
 // });
 
-API.Bots.post("", "Hello, this is bot", {}, function(err,ret) {
+API.Bots.post(ACCESS_TOKEN, "", "Hello, this is bot", {}, function(err,ret) {
   if (!err) {
     console.log(ret);  
   } else {
@@ -22,7 +26,7 @@ API.Bots.post("", "Hello, this is bot", {}, function(err,ret) {
   }
 })
 
-// API.Bots.create("", "", null, function(err,ret) {
+// API.Bots.create(ACCESS_TOKEN, "", "", null, function(err,ret) {
 //   if (!err) {
 //     console.log(ret);  
 //   } else {
@@ -30,7 +34,7 @@ API.Bots.post("", "Hello, this is bot", {}, function(err,ret) {
 //   }
 // })
 
-// API.Bots.destroy("",function(err,ret) {
+// API.Bots.destroy(ACCESS_TOKEN, "",function(err,ret) {
 //   if (!err) {
 //     console.log(ret);     
 //   } else {

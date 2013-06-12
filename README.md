@@ -21,19 +21,23 @@ For this server-side library, we assume you're writing an app using your own acc
 
 #### Step 1: Obtain an Access Token.
 
-To obtain an Access Token, you create an application [here](http://dev.groupme.com/applications/new).
+First, you register an application with GroupMe [here](http://dev.groupme.com/applications/new).
 
-Once you've done this, you will have an access token string that you can now use to identify and authenticate your code.
+Once you've done this, you will have an access token string that you can now use to identify and authenticate yourself. You can copy this into your code directly:
 
     const ACCESS_TOKEN = "13a14310effe0130ee234ea2b99c2231";
 
-#### Step 2: Create the stateless API with the given ACCESS_TOKEN
+If you want to act on the behalf of other users, you have to send them to your redirect url, also supplied by GroupMe. Once the user authenticates, they are routed back to your application with an access token for this user.
 
-    var API = require('groupme').Stateless.makeAPI(ACCESS_TOKEN)
+An example of this is beyond the scope of our introduction, but you can peruse [GroupMe's example](http://dev.groupme.com/) or the official RFC for [OAuth Implicit Grant](http://tools.ietf.org/html/rfc6749#section-4.2).
 
-#### Step 3: Getting and posting data with the stateless API
+#### Step 2: Get access to the stateless API
+
+    var API = require('groupme').Stateless
+
+#### Step 3: Getting and posting data with the stateless API, using your Access Token
     
-    API.Users.me(function(err,ret) {
+    API.Users.me(ACCESS_TOKEN, function(err,ret) {
       if (!err) {
         console.log("Your user id is", ret.id, "and your name is", ret.name);        
       }
@@ -43,15 +47,19 @@ Once you've done this, you will have an access token string that you can now use
 
 Currently we have two simple examples in the /example directory.
 
-**Both Examples require that you fill your Access Code into the file**
+**Both Examples require that you pass it an Access Token as a command line argument**
 
 #### HelloWorld
 
 This example simply requests your username and user id, and prints out the groups you belong to.
 
+    node HelloWorld.js <ACCESS_TOKEN>
+    
 #### HelloBot
 
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
+
+    node HelloBot.js <ACCESS_TOKEN>
 
 ## Documentation
 

@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-var Stateless = require('../../lib/Stateless');
+var API = require('../../index').Stateless;
 
-var ACCESS_TOKEN = "";
+if (process.argv.length < 3) {
+    console.log("Usage: node HelloWorld.js ACCESS_TOKEN");
+    process.exit(1);
+} 
+var ACCESS_TOKEN = process.argv[2];
 
-var API = Stateless.makeAPI(ACCESS_TOKEN);
-
-API.Users.me(function(err,ret) {
+API.Users.me(ACCESS_TOKEN, function(err,ret) {
   if (!err) {
     console.log("Your user id is", ret.id, "and your name is", ret.name);        
   } else {
@@ -14,7 +16,7 @@ API.Users.me(function(err,ret) {
   }
 });
 
-// API.Groups.index(function(err,ret) {
+// API.Groups.index(ACCESS_TOKEN, function(err,ret) {
 //   if (!err) {
 //     var names = [];
 //     for (var i = 0; i < ret.length; i++) {
@@ -27,7 +29,7 @@ API.Users.me(function(err,ret) {
 //   }
 // });
 
-// API.Groups.show("3393242",function(err,ret) {
+// API.Groups.show(ACCESS_TOKEN, "3393242",function(err,ret) {
 //   if (!err) {
 //     console.log("Group info is", ret);        
 //   } else {
@@ -40,7 +42,7 @@ API.Users.me(function(err,ret) {
 //   name: "TestGroup1",
 //   description: "trolololol!"
 // }
-// API.Groups.create(opts, function(err,ret) {
+// API.Groups.create(ACCESS_TOKEN, opts, function(err,ret) {
 //   if (!err) {
 //     console.log("New Group Is", ret);        
 //   } else {
@@ -48,11 +50,11 @@ API.Users.me(function(err,ret) {
 //   }
 // })
 
-// API.Groups.destroy("4699307", function(err,ret) {
+// API.Groups.destroy(ACCESS_TOKEN, "4699307", function(err,ret) {
 //   console.log(err);
 // })
 
-// API.Messages.index("3393242", null, function(err,ret) {
+// API.Messages.index(ACCESS_TOKEN, "3393242", null, function(err,ret) {
 //   if (!err) {
 //     console.log(ret);        
 //   } else {
@@ -66,7 +68,7 @@ API.Users.me(function(err,ret) {
 //     text: "THIS IS SPARTAAAA" + Date.now() 
 //   }
 // }
-// API.Messages.create("4614209", opts, function(err,ret) {
+// API.Messages.create(ACCESS_TOKEN, "4614209", opts, function(err,ret) {
 //   if (!err) {
 //     console.log(ret);        
 //   } else {
