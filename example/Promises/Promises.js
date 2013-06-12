@@ -5,7 +5,7 @@ var Q   = require('Q');
 
 
 if (process.argv.length < 3) {
-    console.log("Usage: node HelloWorld.js ACCESS_TOKEN");
+    console.log("Usage: node Promises.js ACCESS_TOKEN");
     process.exit(1);
 } 
 var ACCESS_TOKEN = process.argv[2];

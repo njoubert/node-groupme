@@ -12,7 +12,7 @@ This supports all 3 parts of the GroupMe API:
 
 One use case of this library is [building bots](http://dev.groupme.com/tutorials/bots).
 
-If you are using this library, feel free to shoot me an email with any questions! Niels Joubert <[njoubert@gmail.com](mailto:njoubert@gmail.com)>
+If you are using this library, feel free to shoot me an email with any questions! Niels Joubert [njoubert@gmail.com](mailto:njoubert@gmail.com)
 
 ## Getting Started
 
@@ -64,6 +64,11 @@ This example uses the IncomingStream API to monitor for a message containing the
     node HelloBot.js <ACCESS_TOKEN>
 
 #### Promises
+
+
+    node Promises.js <ACCESS_TOKEN>
+
+This prints out your group info, and shows how an error is handles.
 
 Shows how to use the fantastic [Q promise library](http://documentup.com/kriskowal/q/) to wrap all the callback-based Stateless API functions and create a promise-based library.
 
