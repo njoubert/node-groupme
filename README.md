@@ -12,9 +12,7 @@ This supports all 3 parts of the GroupMe API:
 
 One use case of this library is [building bots](http://dev.groupme.com/tutorials/bots).
 
-If you are using this library, feel free to shoot me an email with any questions!
-
-Niels Joubert <[njoubert@gmail.com](mailto:njoubert@gmail.com)>
+If you are using this library, feel free to shoot me an email with any questions! Niels Joubert <[njoubert@gmail.com](mailto:njoubert@gmail.com)>
 
 ## Getting Started
 
