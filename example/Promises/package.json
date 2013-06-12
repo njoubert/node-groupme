@@ -1,6 +1,6 @@
 {
-    "name": "node-groupme-hellobot-example",
-    "description": "Hello World Bot Example for Node-GroupMe",
+    "name": "node-groupme-promise-example",
+    "description": "Promise-based Example for Node-GroupMe",
     "author": "Niels Joubert <njoubert@gmail.com> (http://njoubert.com/)",
     "version": "1.0.0",
     "dependencies": {
