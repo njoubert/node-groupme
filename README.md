@@ -98,25 +98,7 @@ This prints out your group info, and shows how an error is handles.
 
 Shows how to use the fantastic [Q promise library](http://documentup.com/kriskowal/q/) to wrap all the callback-based Stateless API functions and create a promise-based library.
 
-First, we patch all the functions in the stateless API to have a .Q function hanging off it:
-
-```javascript
-var API = require('../../index').Stateless;
-var Q   = require('q');
-
-var qfunc = function() {
-    var args = Array.prototype.slice.call(arguments);
-    return Q.nfapply(this, args);
-}
-
-for (g in API) {
-    for (f in API[g]) {
-        API[g][f].Q = qfunc;
-    }
-}
-```
-
-Now, we can use these functions to generate promises:
+All the functions in the stateless API is patched to have a .Q function hanging off it. We can use these functions to generate promises:
 
 ```javascript
 API.Users.me.Q(ACCESS_TOKEN)
