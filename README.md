@@ -142,6 +142,18 @@ node cli.js --help
     -o, --opts <JSON>        supply a json object as options. Be sure to wrap it in double-quotes!
 ```
 
+Example: Creating a bot
+
+```
+node cli.js -a <ACCESSTOKEN> Bots.create --name "My Bot" --group_id <GROUPID>
+```
+
+Example: Creating a group
+
+```
+node cli.js -a 02f19310adac0130ac394ea6b36c8247 Groups.create -o '{"name":"testing","description":"bookashala"}' 
+```
+
 #### Promises
 
 ```javascript
