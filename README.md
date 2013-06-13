@@ -29,7 +29,9 @@ First, you register an application with GroupMe [here](http://dev.groupme.com/ap
 
 Once you've done this, you will have an access token string that you can now use to identify and authenticate yourself. You can copy this into your code directly:
 
-    const ACCESS_TOKEN = "13a14310effe0130ee234ea2b99c2231";
+```javascript
+const ACCESS_TOKEN = "13a14310effe0130ee234ea2b99c2231";
+```
 
 If you want to act on the behalf of other users, you have to send them to your redirect url, also supplied by GroupMe. Once the user authenticates, they are routed back to your application with an access token for this user.
 
@@ -38,16 +40,16 @@ An example of this is beyond the scope of our introduction, but you can peruse [
 #### Step 2: Get access to the stateless API
 
 ```javascript
-    var API = require('groupme').Stateless
+var API = require('groupme').Stateless
 ```
 #### Step 3: Getting and posting data with the stateless API, using your Access Token
 
 ```javascript    
-    API.Users.me(ACCESS_TOKEN, function(err,ret) {
-      if (!err) {
-        console.log("Your user id is", ret.id, "and your name is", ret.name);        
-      }
-    });
+API.Users.me(ACCESS_TOKEN, function(err,ret) {
+  if (!err) {
+    console.log("Your user id is", ret.id, "and your name is", ret.name);        
+  }
+});
 ```
 
 ## Examples
@@ -61,20 +63,20 @@ Examples live in the `/example` directory.
 This example simply requests your username and user id, and prints out the groups you belong to.
 
 ```javascript
-    node HelloWorld.js <ACCESS_TOKEN>
+node HelloWorld.js <ACCESS_TOKEN>
 ```
 #### HelloBot
 
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
 
 ```javascript
-    node HelloBot.js <ACCESS_TOKEN>
+node HelloBot.js <ACCESS_TOKEN>
 ```
 
 #### Promises
 
 ```javascript
-    node Promises.js <ACCESS_TOKEN>
+node Promises.js <ACCESS_TOKEN>
 ```
 
 This prints out your group info, and shows how an error is handles.
@@ -84,30 +86,30 @@ Shows how to use the fantastic [Q promise library](http://documentup.com/kriskow
 First, we patch all the functions in the stateless API to have a .Q function hanging off it:
 
 ```javascript
-    var API = require('../../index').Stateless;
-    var Q   = require('q');
+var API = require('../../index').Stateless;
+var Q   = require('q');
 
-    var qfunc = function() {
-        var args = Array.prototype.slice.call(arguments);
-        return Q.nfapply(this, args);
-    }
+var qfunc = function() {
+    var args = Array.prototype.slice.call(arguments);
+    return Q.nfapply(this, args);
+}
 
-    for (g in API) {
-        for (f in API[g]) {
-            API[g][f].Q = qfunc;
-        }
+for (g in API) {
+    for (f in API[g]) {
+        API[g][f].Q = qfunc;
     }
+}
 ```
 
 Now, we can use these functions to generate promises:
 
 ```javascript
-    API.Users.me.Q(ACCESS_TOKEN)
-        .then(function(da) { 
-            return API.Groups.index.Q(ACCESS_TOKEN); 
-        }).then(function(da) {
-            console.log(da);
-        });
+API.Users.me.Q(ACCESS_TOKEN)
+    .then(function(da) { 
+        return API.Groups.index.Q(ACCESS_TOKEN); 
+    }).then(function(da) {
+        console.log(da);
+    });
 ```
 
 
