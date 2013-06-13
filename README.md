@@ -37,15 +37,18 @@ An example of this is beyond the scope of our introduction, but you can peruse [
 
 #### Step 2: Get access to the stateless API
 
+```javascript
     var API = require('groupme').Stateless
-
+```
 #### Step 3: Getting and posting data with the stateless API, using your Access Token
-    
+
+```javascript    
     API.Users.me(ACCESS_TOKEN, function(err,ret) {
       if (!err) {
         console.log("Your user id is", ret.id, "and your name is", ret.name);        
       }
     });
+```
 
 ## Examples
 
@@ -57,18 +60,22 @@ Examples live in the `/example` directory.
 
 This example simply requests your username and user id, and prints out the groups you belong to.
 
+```javascript
     node HelloWorld.js <ACCESS_TOKEN>
-    
+```
 #### HelloBot
 
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
 
+```javascript
     node HelloBot.js <ACCESS_TOKEN>
+```
 
 #### Promises
 
-
+```javascript
     node Promises.js <ACCESS_TOKEN>
+```
 
 This prints out your group info, and shows how an error is handles.
 
@@ -76,6 +83,7 @@ Shows how to use the fantastic [Q promise library](http://documentup.com/kriskow
 
 First, we patch all the functions in the stateless API to have a .Q function hanging off it:
 
+```javascript
     var API = require('../../index').Stateless;
     var Q   = require('q');
 
@@ -89,16 +97,18 @@ First, we patch all the functions in the stateless API to have a .Q function han
             API[g][f].Q = qfunc;
         }
     }
+```
 
 Now, we can use these functions to generate promises:
 
+```javascript
     API.Users.me.Q(ACCESS_TOKEN)
         .then(function(da) { 
             return API.Groups.index.Q(ACCESS_TOKEN); 
         }).then(function(da) {
             console.log(da);
         });
-
+```
 
 
 ## Development
@@ -184,15 +194,21 @@ The IncomingStream is based around a PubSub message passing approach. It extends
 
 Include the IncomingStream as follows:
 
+```javascript
     var IncomingStream = require('groupme').IncomingStream;
+```
 
 You can construct an IncomingStream for a given access token and user id, which will receive all messages sent to that user, regardless of group: 
 
+```javascript
     var iStream = new IncomingStream(ACCESS_TOKEN, USER_ID);
+```
 
 If you want to receive typing-in-progress notifications for specific groups, you can supply an array of group ids:
 
+```javascript
     var iStream = new IncomingStream(ACCESS_TOKEN, USER_ID, [GROUP_ID1, ...]);
+```
 
 #### Events
 
