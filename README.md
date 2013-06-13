@@ -69,9 +69,24 @@ node HelloWorld.js <ACCESS_TOKEN>
 
 This example uses the IncomingStream API to monitor for a message containing the words "@BOT", and replies to that with a canned message.
 
+Step 1: Get info about your account, groups and bots
+
 ```javascript
 node HelloBot.js <ACCESS_TOKEN>
 ```
+
+Step 2: Register a bot with GroupMe
+
+```javascript
+node HelloBot.js <ACCESS_TOKEN> <USER_ID> <GROUP_ID> <BOT_NAME>
+```
+
+Step 3: Start the bot to listen for messages coming in, replying to the group it is registerd on
+
+```javascript
+node HelloBot.js <ACCESS_TOKEN> <USER_ID> <BOT_ID>
+```
+
 
 #### Promises
 
