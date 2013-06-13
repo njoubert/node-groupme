@@ -162,6 +162,7 @@ program
       opts = JSON.parse(program.opts);
     API.Bots.create(program.authtoken, program.name, program.group_id, opts, justPrintEverythingCallback);
 });
+  
 program
   .command('Bots.post')
   .description("Post a message as a bot")
@@ -172,12 +173,14 @@ program
       opts = JSON.parse(program.opts);
     API.Bots.post(program.authtoken, program.bot_id, program.text, opts, justPrintEverythingCallback);
 });
+
 program
   .command('Bots.index')
   .description("List bots you have created")
   .action(function(env) {
     API.Bots.index(program.authtoken, justPrintEverythingCallback);
 });
+
 program
   .command('Bots.destroy')
   .description("Remove a bot that you have created")

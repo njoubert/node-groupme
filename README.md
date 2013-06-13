@@ -42,6 +42,7 @@ An example of this is beyond the scope of our introduction, but you can peruse [
 ```javascript
 var API = require('groupme').Stateless
 ```
+
 #### Step 3: Getting and posting data with the stateless API, using your Access Token
 
 ```javascript    
@@ -51,6 +52,17 @@ API.Users.me(ACCESS_TOKEN, function(err,ret) {
   }
 });
 ```
+## Using the Command Line Inteface to GroupMe
+
+A simple CLI interface to the GroupMe API is one of the examples. This is useful to prototype and test, since all the commands print out the raw JSON returned from GroupMe. See it in /examples/CommandLineInterface.  Simply run:
+
+```javascript
+npm install .
+node cli.js --help
+```
+
+This depends on the excellent commander.js for command line option parsing.
+
 
 ## Examples
 
@@ -87,6 +99,48 @@ Step 3: Start the bot to listen for messages coming in, replying to the group it
 node HelloBot.js <ACCESS_TOKEN> <USER_ID> <BOT_ID>
 ```
 
+#### Command Line Interface.
+
+This lets you query the stateless API from the command line.
+
+```
+node cli.js --help
+
+  Usage: cli.js [options] [command]
+
+  Commands:
+
+    Groups.index           List the authenticated user's active groups.
+    Groups.former          List they groups you have left but can rejoin.
+    Groups.show            List a specific group.
+    Groups.create          Create a new group.
+    Groups.update          Update a group after creation.
+    Groups.destroy         Disband a group. This action is only available to the group creator.
+    Members.add            Add members to a group.
+    Members.results        Get the membership results from an add call.
+    Messages.index         Messages for a group. Return 20, can request before_id or after_id.
+    Messages.create        Send a message to a group.
+    Likes.create           Like a message.
+    Likes.destroy          Unlike a liked message.
+    Bots.create            Create a bot.
+    Bots.post              Post a message as a bot
+    Bots.index             List bots you have created
+    Bots.destroy           Remove a bot that you have created
+    Users.me               Get details about the authenticated user.
+
+  Options:
+
+    -h, --help               output usage information
+    -V, --version            output the version number
+    -a, --authtoken <token>  Set the auth token to use
+    -g, --group_id <id>      The group_id to use
+    -r, --results_id <id>    The results_id to use
+    -m, --message_id <id>    The message_id to use
+    -b, --bot_id <id>        The message_id to use
+    -n, --name <string>      The bot name to use
+    -t, --text <string>      The text to use for a bot message. Be sure to quote it!
+    -o, --opts <JSON>        supply a json object as options. Be sure to wrap it in double-quotes!
+```
 
 #### Promises
 
@@ -108,6 +162,7 @@ API.Users.me.Q(ACCESS_TOKEN)
         console.log(da);
     });
 ```
+
 
 
 ## Development
@@ -226,4 +281,6 @@ Register for events using `iStream.on(EVENT, CALLBACK);`
 In Progress.
 
 
+## LICENSE
 
+See LICENSE file
