@@ -1,4 +1,12 @@
-0.1.0 / 2013-06-12 
+0.2.0 / 2013-06-13
+==================
+
+ * Testing infrastructure up! Hand-rolled for now
+ * Entire Stateless API has tests
+ * More documentation and examples
+ * An attempt at the ImageService, still not working
+
+0.1.0 / 2013-06-13
 ==================
 
  * A history file
