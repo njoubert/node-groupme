@@ -184,6 +184,12 @@ I welcome pull requests, emails, bug reports and the like.
 That being said, this is not my full-time job. If you are using this as part of yours and want to take over as lead developer we can have that discussion.
 
 
+## Testing
+
+Tests live in the `/test` directory. To run them, simply type: `node test.js ACCESS_TOKEN`.
+
+Currently there is a set integration test of the entire Stateless API.
+
 ## API Documentation
 
 The code itself is fairly terse and well-commented, and is the best place to go for the full API, but here we stub out all the functionality for quick reference. 
