@@ -12,8 +12,12 @@ var IMAGE_PATH   = process.argv[3];
 
 
 ImageService.post(
-    fs.createReadStream(IMAGE_PATH), 
+    IMAGE_PATH, 
         function(err,ret) {
-          console.log(ret);
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(ret); 
+          }
         });
 
