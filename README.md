@@ -98,6 +98,9 @@ Step 3: Start the bot to listen for messages coming in, replying to the group it
 ```javascript
 node HelloBot.js <ACCESS_TOKEN> <USER_ID> <BOT_ID>
 ```
+#### PictureText
+
+This example uploads an image to GroupMe's ImageService, which is then used to send a picture message.
 
 #### Command Line Interface.
 
@@ -209,49 +212,49 @@ The default interface uses callbacks, but you can also use the Promise interface
 #### Groups
 
 
-* `api.Groups.index(access_token, callback)` List the authenticated user's active groups.
-* `api.Groups.former(access_token, callback)` List they groups you have left but can rejoin.
-* `api.Groups.show(access_token, group_id, callback)` Load a specific group.
-* `api.Groups.create(access_token, opts, callback)` Create a new group. 
+* `Groups.index(access_token, callback)` List the authenticated user's active groups.
+* `Groups.former(access_token, callback)` List they groups you have left but can rejoin.
+* `Groups.show(access_token, group_id, callback)` Load a specific group.
+* `Groups.create(access_token, opts, callback)` Create a new group. 
     * Opts consists of `{name:,description:,mage_url:,share:}`
-* `api.Groups.update(access_token, group_id, opts, callback)` Update a group after creation. 
+* `Groups.update(access_token, group_id, opts, callback)` Update a group after creation. 
     * Opts consists of `{name:,description:,mage_url:,share:}`
-* `api.Groups.destroy(access_token, group_id, callback)` Disband a group. This action is only available to the group creator.
+* `Groups.destroy(access_token, group_id, callback)` Disband a group. This action is only available to the group creator.
 
 
 #### Members
 
-* `api.Members.add(access_token, group_id, opts, callback)` Add members to a group.
+* `Members.add(access_token, group_id, opts, callback)` Add members to a group.
     * Opts consists of `{members: [{nickname:, user_id:, phone_number:, email: }, ...]}`
-* `api.Members.results(access_token, group_id, results_id, callback)` Get the membership results from an add call.
+* `Members.results(access_token, group_id, results_id, callback)` Get the membership results from an add call.
 
 
 #### Messages
 
-* `api.Messages.index(access_token, group_id, opts, callback)` Get messages for a group
+* `Messages.index(access_token, group_id, opts, callback)` Get messages for a group
     * Opts consists of `{before_id:}` or `{after_id:}`
-* `api.Messages.create(access_token, group_id, opts, callback)`
+* `Messages.create(access_token, group_id, opts, callback)`
     * Opts here are required, and consists of `{message:{source_guid:, text:, attachments: [{type:"image", url:}, {type:"location", name:, lat, lng}, {type:"split", token:}, {type:"emoji", placeholder:, charmap:}]}}`
 
 
 #### Likes
 
 
-* `api.Likes.create(access_token, group_id, message_id, callback)` Like a message.
-* `api.Likes.destroy(access_token, group_id, message_id, callback)` Unlike a liked message.
+* `Likes.create(access_token, group_id, message_id, callback)` Like a message.
+* `Likes.destroy(access_token, group_id, message_id, callback)` Unlike a liked message.
 
 #### Bots
 
-* `api.Bots.create(access_token, name, group_id, opts, callback)` Create a bot. Associated with a specific name and group.
+* `Bots.create(access_token, name, group_id, opts, callback)` Create a bot. Associated with a specific name and group.
     * Opts consists of `{avatar_url:, callback_url:}`
-* `api.Bots.post(access_token, bot_id, text, opts, callback)` Post a message as a bot.
+* `Bots.post(access_token, bot_id, text, opts, callback)` Post a message as a bot.
     * Opts cosists of `{picture_url:}`
-* `api.Bots.index(access_token, callback)` List bots you have created
-* `api.Bots.destroy(access_token, bot_id, callback)` Remove a bot that you have created
+* `Bots.index(access_token, callback)` List bots you have created
+* `Bots.destroy(access_token, bot_id, callback)` Remove a bot that you have created
 
 #### Users
 
-* `api.Users.me(access_token, callback)` Get details about the authenticated user
+* `Users.me(access_token, callback)` Get details about the authenticated user
 
 ### IncomingStream
 
@@ -296,8 +299,33 @@ Register for events using `iStream.on(EVENT, CALLBACK);`
 
 ### ImageService
 
-In Progress.
+If you want to post images as part of messages or set your avatar, you need a URL to an image that's living on GroupMe's ImageService. This part of the API allows you to upload a raw png to GroupMe, and get a GroupMe ImageService URL back. This URL can then be used in subsequent messages and to set your avatar.
 
+**Experimental!** This currently only supports pngs, their API is inconsistent and I'm working my way through it.
+
+Include it:
+
+```javascript
+var ImageService = require('groupme').ImageService;
+```
+
+Upload an image based on a path on your server:
+
+```javascript
+ImageService.post(
+    IMAGE_PATH, 
+        function(err,ret) {
+          if (err) {
+            console.log(err)
+          } else {
+            console.log(ret); 
+          }
+        });
+```
+
+#### API
+
+* `post(path, callback)` Callback receives a JSON object with the `picture_url` of your upload.
 
 ## LICENSE
 
