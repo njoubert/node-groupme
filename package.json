@@ -1,6 +1,6 @@
 {
   "name": "groupme",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "index",
   "description": "A Node Module for interacting with the GroupMe API. Supports both querying the Stateless API and receiving Websocket-based push messages, and provides a CLI.",
   "keywords": ["groupme", "api", "text", "bot", "websocket", "push", "cli"],

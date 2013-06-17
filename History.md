@@ -1,3 +1,25 @@
+0.5.1 / 2012-06-16
+==================
+
+ * Removed extraneous debug output
+
+0.5.0 / 
+==================
+
+ * Stripped out Underscore.js dependency
+ * Bot example now works correctly, checks for all the correct data fields
+
+0.4.0 / 
+==================
+
+ * Added node-mime as a dependency (used for image uploads)
+ * ImageService can now upload any file with correct mime type.
+
+0.3.0 / 2013-06-14
+==================
+
+ * ImageService in experimental working condition, pngs only
+
 0.2.0 / 2013-06-13
 ==================
 
