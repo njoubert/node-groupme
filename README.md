@@ -301,7 +301,7 @@ Register for events using `iStream.on(EVENT, CALLBACK);`
 
 If you want to post images as part of messages or set your avatar, you need a URL to an image that's living on GroupMe's ImageService. This part of the API allows you to upload a raw png to GroupMe, and get a GroupMe ImageService URL back. This URL can then be used in subsequent messages and to set your avatar.
 
-**Experimental!** This currently only supports pngs, their API is inconsistent and I'm working my way through it.
+This uses the [node-mime](https://github.com/broofa/node-mime) library to determine the content-type of the file.
 
 Include it:
 
