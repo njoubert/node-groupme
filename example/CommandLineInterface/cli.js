@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var API = require('../../index').Stateless;
+var ImageService = require('../../index').ImageService;
 
 var program = require('commander');
 
@@ -13,7 +14,9 @@ program
   .option('-b, --bot_id <id>', 'The message_id to use')
   .option('-n, --name <string>', 'The bot name to use')
   .option('-t, --text <string>', 'The text to use for a bot message. Be sure to quote it!')
-  .option('-o, --opts <JSON>', 'supply a json object as options. Be sure to wrap it in double-quotes!');
+  .option('-o, --opts <JSON>', 'supply a json object as options. Be sure to wrap it in double-quotes!')
+  .option('-i, --image <PATH>', 'an image to upload to the ImageService. Use with ImageService.post')
+  ;
 
 var justPrintEverythingCallback = function(err, ret) {
   if (!err) {
@@ -197,7 +200,19 @@ program
   .command('Users.me')
   .description("Get details about the authenticated user.")
   .action(function(env) {
-  API.Users.me(program.authtoken, justPrintEverythingCallback);
+    API.Users.me(program.authtoken, justPrintEverythingCallback);
+});
+
+/************************************************************************
+ * ImageService
+ ***********************************************************************/
+
+program
+  .command('ImageService.post')
+  .description("Upload an image to GroupMe's ImageService")
+  .action(function(env) {
+    requireArgs(["image"]);
+    ImageService.post(program.image, justPrintEverythingCallback);
 });
 
 
