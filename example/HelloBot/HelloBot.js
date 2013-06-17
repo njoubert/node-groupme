@@ -4,7 +4,7 @@ var GroupMe = require('../../index');
 var API = GroupMe.Stateless;
 
 
-var BOT_LISTENS_FOR = "@gents";
+var BOT_LISTENS_FOR = "@BOT";
 
 /************************************************************************
  * Read the access token from the command line.
@@ -127,7 +127,10 @@ if (process.argv.length == 3) {
     incoming.on('message', function(msg) {
         console.log("[IncomingStream 'message'] Message Received");
 
-        if (msg["data"]["subject"]["text"].indexOf(BOT_LISTENS_FOR) >= 0) {
+        if (msg["data"] 
+            && msg["data"]["subject"] 
+            && msg["data"]["subject"]["text"]
+            && msg["data"]["subject"]["text"].indexOf(BOT_LISTENS_FOR) >= 0) {
             if (bot_id && msg["data"]["subject"]["name"] != "BOT") {
                 API.Bots.post(
                     ACCESS_TOKEN, // Identify the access token
