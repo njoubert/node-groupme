@@ -1,15 +1,20 @@
+0.5.2 / 2012-06-17
+==================
+
+ * Factoring out Promisify methods.
+
 0.5.1 / 2012-06-16
 ==================
 
  * Removed extraneous debug output
 
-0.5.0 / 
+0.5.0 / 2013-06-15
 ==================
 
  * Stripped out Underscore.js dependency
  * Bot example now works correctly, checks for all the correct data fields
 
-0.4.0 / 
+0.4.0 / 2013-06-15
 ==================
 
  * Added node-mime as a dependency (used for image uploads)
