@@ -6,6 +6,8 @@ A [GroupMe v3 API](http://dev.groupme.com/docs/v3) Module for NodeJS.
 Available from NPM: `npm install groupme`
 https://npmjs.org/package/groupme
 
+For known issues, see ISSUES.md file.
+
 This supports all 3 parts of the GroupMe API:
 
 - The [Stateless API](http://dev.groupme.com/docs/v3)
@@ -340,6 +342,10 @@ ImageService.post(
 #### API
 
 * `post(path, callback)` Callback receives a JSON object with the `picture_url` of your upload.
+
+## ISSUES
+
+For known issues, see ISSUES.md file.
 
 ## LICENSE
 
