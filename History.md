@@ -1,3 +1,9 @@
+0.5.3 / 2012-06-19
+==================
+
+* Finished PictureText example
+* Added an ISSUES file
+
 0.5.2 / 2012-06-17
 ==================
 
