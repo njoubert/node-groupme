@@ -102,6 +102,20 @@ node HelloBot.js <ACCESS_TOKEN> <USER_ID> <BOT_ID>
 
 This example uploads an image to GroupMe's ImageService, which is then used to send a picture message.
 
+It also demonstrates using EventEmitters to turn callback-based APIs into event-based APIs, a useful and alternative way to fight callback bloat.
+
+You can use it to just upload an image:
+
+```javascript
+node PictureText.js <ACCESS_TOKEN> <IMAGE_PATH>
+```
+
+Or you can use it to upload an image and post it as a message to a group:
+
+```javascript
+node PictureText.js <ACCESS_TOKEN> <IMAGE_PATH> <GROUP_ID>
+```
+
 #### Command Line Interface.
 
 This lets you query the stateless API from the command line.
