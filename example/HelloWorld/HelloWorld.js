@@ -1,12 +1,24 @@
 #!/usr/bin/env node
 
+/************************************************************************
+ * Include the Stateless API
+ ***********************************************************************/
+
 var API = require('../../index').Stateless;
+
+/************************************************************************
+ * Read the access token from the command line.
+ ***********************************************************************/
 
 if (process.argv.length < 3) {
     console.log("Usage: node HelloWorld.js ACCESS_TOKEN");
     process.exit(1);
 } 
 var ACCESS_TOKEN = process.argv[2];
+
+/************************************************************************
+ * Request your user id and name
+ ***********************************************************************/
 
 API.Users.me(ACCESS_TOKEN, function(err,ret) {
   if (!err) {
@@ -15,6 +27,10 @@ API.Users.me(ACCESS_TOKEN, function(err,ret) {
     console.log("ERROR!", err)
   }
 });
+
+/************************************************************************
+ * Request all your group info
+ ***********************************************************************/
 
 API.Groups.index(ACCESS_TOKEN, function(err,ret) {
   if (!err) {
@@ -29,6 +45,9 @@ API.Groups.index(ACCESS_TOKEN, function(err,ret) {
   }
 });
 
+/************************************************************************
+ * If you also supply a group_id as a second argument, get group details
+ ***********************************************************************/
 
 if (process.argv.length == 4) {
 
@@ -44,43 +63,3 @@ if (process.argv.length == 4) {
 
 
 }
-
-
-
-// var opts = {
-//   name: "TestGroup1",
-//   description: "trolololol!"
-// }
-// API.Groups.create(ACCESS_TOKEN, opts, function(err,ret) {
-//   if (!err) {
-//     console.log("New Group Is", ret);        
-//   } else {
-//     console.log("ERROR!", err)
-//   }
-// })
-
-// API.Groups.destroy(ACCESS_TOKEN, "4699307", function(err,ret) {
-//   console.log(err);
-// })
-
-// API.Messages.index(ACCESS_TOKEN, "3393242", null, function(err,ret) {
-//   if (!err) {
-//     console.log(ret);        
-//   } else {
-//     console.log("ERROR!", err)
-//   }
-// })
-
-// var opts = { 
-//   message : {
-//     source_guid: "asdfasafff" + Date.now(),
-//     text: "THIS IS SPARTAAAA" + Date.now() 
-//   }
-// }
-// API.Messages.create(ACCESS_TOKEN, "4614209", opts, function(err,ret) {
-//   if (!err) {
-//     console.log(ret);        
-//   } else {
-//     console.log("ERROR!", err)
-//   } 
-// })
