@@ -80,7 +80,7 @@ var createBot = function(eventEmitter, access_token, group_id, picture_url) {
     access_token,
     "TestBot_PictureText",
     group_id,
-    {avatar_url:picture_url},
+    {avatar_url:"https://secure.gravatar.com/avatar/0ea0a27ab0e9a49b753cd2e3c27e585d?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"},
     function(err,ret) {
       if (err) {
         eventEmitter.emit('error', err);
