@@ -1,11 +1,11 @@
 # TODO
 
 1. Features
-    - ImageService API
-    - ImageService Example
+    - EventEmitter-ify interface
+    - Image upload for avatars
 2. Testing
-    - Simple tests of all the stateless stuff
+    - Test the IncomingStream
     - Testing library
-3. Documentation
-    - ImageService documentation
+
+  
 
