@@ -350,3 +350,6 @@ For known issues, see ISSUES.md file.
 ## LICENSE
 
 See LICENSE file
+
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/267fa65389e14ec58d75b5e995f9501b "githalytics.com")](http://githalytics.com/njoubert/node-groupme)
