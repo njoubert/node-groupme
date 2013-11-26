@@ -68,7 +68,7 @@ if (process.argv.length == 3) {
     var GROUP_ID = process.argv[4];
     var BOT_NAME = process.argv[5];
 
-    api.Bots.create(ACCESS_TOKEN, BOT_NAME, GROUP_ID, {}, function(err,ret) {
+    API.Bots.create(ACCESS_TOKEN, BOT_NAME, GROUP_ID, {}, function(err,ret) {
         if (!err) {
             console.log(ret);
         } else {
