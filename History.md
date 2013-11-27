@@ -1,15 +1,20 @@
-0.5.3 / 2012-06-19
+0.5.4 / 2013-11-27
+==================
+
+* Fixed bug in HelloBot example
+
+0.5.3 / 2013-06-19
 ==================
 
 * Finished PictureText example
 * Added an ISSUES file
 
-0.5.2 / 2012-06-17
+0.5.2 / 2013-06-17
 ==================
 
  * Factoring out Promisify methods.
 
-0.5.1 / 2012-06-16
+0.5.1 / 2013-06-16
 ==================
 
  * Removed extraneous debug output
