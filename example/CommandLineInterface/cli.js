@@ -133,6 +133,29 @@ program
 });
 
 /************************************************************************
+ * Direct Messages
+ ***********************************************************************/
+
+program
+  .command('DirectMessages.index')
+  .description("Fetch direct messages between two users. Return 20, can request before_id or after_id.")
+  .action(function(env) {
+    requireArgs(["opts"]);    
+    var opts = {};
+    if (program.opts)
+      opts = JSON.parse(program.opts);
+    API.DirectMessages.index(program.authtoken, opts, justPrintEverythingCallback);
+});
+
+program
+  .command('DirectMessages.create')
+  .description("Send a message to another user.")
+  .action(function(env) {
+    requireArgs(["opts"]);
+    API.DirectMessages.create(program.authtoken, JSON.parse(program.opts), justPrintEverythingCallback);
+});
+
+/************************************************************************
  * Likes
  ***********************************************************************/
 
