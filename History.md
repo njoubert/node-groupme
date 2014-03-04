@@ -1,3 +1,13 @@
+0.5.6 / 2014-03-03
+==================
+
+* Added CLI support for DirectMessages
+
+0.5.5 / 2014-03-03
+==================
+
+* Fixed DirectMessage interface
+
 0.5.4 / 2013-11-27
 ==================
 
