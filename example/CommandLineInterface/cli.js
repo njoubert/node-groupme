@@ -16,6 +16,7 @@ program
   .option('-t, --text <string>', 'The text to use for a bot message. Be sure to quote it!')
   .option('-o, --opts <JSON>', 'supply a json object as options. Be sure to wrap it in double-quotes!')
   .option('-i, --image <PATH>', 'an image to upload to the ImageService. Use with ImageService.post')
+  .option('-c, --continuation_token <string>', 'continuation token used to get the next page of polls')
   ;
 
 var justPrintEverythingCallback = function(err, ret) {
@@ -238,6 +239,25 @@ program
     ImageService.post(program.image, justPrintEverythingCallback);
 });
 
+/************************************************************************
+ * Polls
+ ***********************************************************************/
+
+ program
+   .command('Polls.index')
+   .description('List polls in group.')
+   .action(function(env) {
+     requireArgs(["group_id"]);
+     API.Polls.index(program.authtoken, program.group_id, program.continuation_token, justPrintEverythingCallback);
+ });
+
+program
+  .command('Polls.create')
+  .description('Create a poll. Requires -o {"subject":"Poll Title", "options":["Option 1", "Option 2"]}')
+  .action(function(env) {
+    requireArgs(["opts", "group_id"]);
+    API.Polls.create(program.authtoken, program.group_id, JSON.parse(program.opts), justPrintEverythingCallback);
+});
 
 program.parse(process.argv);
 

@@ -3,7 +3,15 @@
   "version": "0.5.6",
   "main": "index",
   "description": "A Node Module for interacting with the GroupMe API. Supports both querying the Stateless API and receiving Websocket-based push messages, and provides a CLI.",
-  "keywords": ["groupme", "api", "text", "bot", "websocket", "push", "cli"],
+  "keywords": [
+    "groupme",
+    "api",
+    "text",
+    "bot",
+    "websocket",
+    "push",
+    "cli"
+  ],
   "author": "Niels Joubert <njoubert@gmail.com> (http://njoubert.com/)",
   "repository": {
     "type": "git",
@@ -20,17 +28,16 @@
     "test": "node ./test/test.js"
   },
   "dependencies": {
-    "websocket": "1.0.x",
-    "request": "2.12.x",
+    "mime": "1.x.x",
     "q": "0.9.x",
-    "mime": "1.x.x"
+    "request": "^2.88.0",
+    "websocket": "1.0.x"
   },
-  "devDependencies" : {
-    
-  },
-  "license" : [
-    { "type" : "zlib",
-     "url" : "http://github.com/njoubert/node-groupme/blob/master/LICENSE"
+  "devDependencies": {},
+  "license": [
+    {
+      "type": "zlib",
+      "url": "http://github.com/njoubert/node-groupme/blob/master/LICENSE"
     }
   ]
 }
