@@ -261,15 +261,15 @@ The default interface uses callbacks, but you can also use the Promise interface
 
 #### Chats
 
-* `Chats.index(access_token, group_id, opts, callback)` Get messages for a group
-    * Opts consists of `{before_id:}` or `{after_id:}`
+* `Chats.index(access_token, opts, callback)` Get messages for a group
+    * Opts are optional and consist of `{page:, per_page:}`
 
 #### DirectMessages
 
-* `DirectMessages.index(access_token, group_id, opts, callback)` Get directmessages between two users, returning 20 at a time. 
-    * Opts consists of `{before_id:}` or `{after_id:}`
-* `DirectMessages.create(access_token, group_id, opts, callback)`
-    * Opts here are required, and consists of `{message:{source_guid:, text:, attachments: [{type:"image", url:}, {type:"location", name:, lat, lng}, {type:"split", token:}, {type:"emoji", placeholder:, charmap:}]}}`
+* `DirectMessages.index(access_token, opts, callback)` Get directmessages between two users, returning 20 at a time. 
+    * Opts are required and consists of `{other_user_id:}` and optionally `{before_id:, after_id:}`
+* `DirectMessages.create(access_token, opts, callback)`
+    * Opts here are required, and quite complex. Please see the groupme documentation!
 
 
 #### Likes
