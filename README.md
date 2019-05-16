@@ -139,6 +139,9 @@ node cli.js --help
     Members.results        Get the membership results from an add call.
     Messages.index         Messages for a group. Return 20, can request before_id or after_id.
     Messages.create        Send a message to a group.
+    Chats.index            Index of DM chats a user has.
+    DirectMessages.index   Fetch direct messages between two users. Return 20, can request before_id or after_id.
+    DirectMessages.create  Send a message to another user.
     Likes.create           Like a message.
     Likes.destroy          Unlike a liked message.
     Bots.create            Create a bot.
@@ -146,6 +149,9 @@ node cli.js --help
     Bots.index             List bots you have created
     Bots.destroy           Remove a bot that you have created
     Users.me               Get details about the authenticated user.
+    ImageService.post      Upload an image to GroupMe's ImageService
+    Polls.index            List polls in group
+    Polls.create           Create a poll. Requires -o {"subject":"Poll Title", "options":["Option 1", "Option 2"]}
 
   Options:
 
@@ -159,6 +165,8 @@ node cli.js --help
     -n, --name <string>      The bot name to use
     -t, --text <string>      The text to use for a bot message. Be sure to quote it!
     -o, --opts <JSON>        supply a json object as options. Be sure to wrap it in double-quotes!
+    -i, --image <PATH>       an image to upload to the ImageService. Use with ImageService.post
+    -c, --continuation_token <string>, continuation token used to get the next page of polls
 ```
 
 Example: Creating a bot
@@ -244,12 +252,23 @@ The default interface uses callbacks, but you can also use the Promise interface
     * Opts consists of `{members: [{nickname:, user_id:, phone_number:, email: }, ...]}`
 * `Members.results(access_token, group_id, results_id, callback)` Get the membership results from an add call.
 
-
 #### Messages
 
 * `Messages.index(access_token, group_id, opts, callback)` Get messages for a group
     * Opts consists of `{before_id:}` or `{after_id:}`
 * `Messages.create(access_token, group_id, opts, callback)`
+    * Opts here are required, and consists of `{message:{source_guid:, text:, attachments: [{type:"image", url:}, {type:"location", name:, lat, lng}, {type:"split", token:}, {type:"emoji", placeholder:, charmap:}]}}`
+
+#### Chats
+
+* `Chats.index(access_token, group_id, opts, callback)` Get messages for a group
+    * Opts consists of `{before_id:}` or `{after_id:}`
+
+#### DirectMessages
+
+* `DirectMessages.index(access_token, group_id, opts, callback)` Get directmessages between two users, returning 20 at a time. 
+    * Opts consists of `{before_id:}` or `{after_id:}`
+* `DirectMessages.create(access_token, group_id, opts, callback)`
     * Opts here are required, and consists of `{message:{source_guid:, text:, attachments: [{type:"image", url:}, {type:"location", name:, lat, lng}, {type:"split", token:}, {type:"emoji", placeholder:, charmap:}]}}`
 
 

@@ -134,6 +134,20 @@ program
 });
 
 /************************************************************************
+* Chats
+***********************************************************************/
+
+program
+  .command('Chats.index')
+  .description("Index of DM chats a user has.")
+  .action(function(env) {
+    var opts = {};
+    if (program.opts)
+      opts = JSON.parse(program.opts);
+    API.Chats.index(program.authtoken, program.group_id, opts, justPrintEverythingCallback);
+});
+
+/************************************************************************
  * Direct Messages
  ***********************************************************************/
 
