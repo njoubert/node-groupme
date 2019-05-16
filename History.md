@@ -1,3 +1,14 @@
+0.5.8 / 2019-05-15
+==================
+
+* Incorporated Chats and DMs into CLI
+* Updated readme
+
+0.5.7 / 2019-05-15
+==================
+
+* Added CLI support for Chats
+
 0.5.6 / 2014-03-03
 ==================
 
