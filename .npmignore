@@ -1,3 +1,4 @@
 .npmignore
+.git
 .gitignore
 node_modules
