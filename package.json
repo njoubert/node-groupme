@@ -30,7 +30,7 @@
   "dependencies": {
     "mime": "1.x.x",
     "q": "0.9.x",
-    "request": "^2.88.0",
+    "request": "npm:@cypress/request@^4.0.0",
     "websocket": "1.0.x"
   },
   "devDependencies": {},
